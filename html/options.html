@@ -1,0 +1,802 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title>Your Information</title>
+
+<link type="text/css" rel="stylesheet" href="../css/jquery.notice.css" />
+
+<script src="../js/jquery/jquery-1.7.1.min.js"></script>
+<script src="../js/jquery/jquery-impromptu.3.2.js"></script>
+<script src="../js/jquery/jquery.notice.js"></script>
+<link rel="stylesheet" href="../css/jquery-impromptu.3.2.css" />
+<script src="../js/sm/options.js"></script>
+
+<style>
+.slidingDiv {
+   
+    background-color: #99CCFF;
+    padding:20px;
+    margin-top:10px;
+    border-bottom:5px solid #3399FF;
+}
+ 
+.show_hide {
+    display:none;
+}
+
+body 
+{
+	overflow-x: hidden;
+	font-family: Verdana, san-serif, Helvetica;
+	background-color: white;
+	margin: 0;
+	line-height: 1.2em;	
+	font-weight: bold;
+	overflow-y: scroll;
+}
+.optionlist
+{
+	width: 520px;
+	height: 591px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+select
+{
+	width: 99%;
+	padding: 5px;
+	border: 1px solid #DDDDDD;
+	outline: none;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 0 2px #DDDDDD;
+	box-shadow: 0 0 2px #DDDDDD;
+}
+
+select:hover
+{
+	cursor:pointer;
+}
+
+input[type="text"] 
+{
+	padding: 5px;
+	border: 1px solid #DDDDDD;
+	outline: none !Important;
+	width: 95%;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 0 2px #DDDDDD;
+	box-shadow: 0 0 2px #DDDDDD;
+}
+
+#male, #female, #bxTwitter, #bxLinkedIn
+{
+	font-size: 8px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	border: 0px;
+	width: 20%;
+	padding: 0px;
+}
+.q
+{
+	text-decoration: none;
+	color: blue;
+	position: relative;
+	font-size: 14px;
+	float: right;
+}
+.btn 
+{
+	border: 0;
+	width: 109px;
+	height: 40px;
+	background: url("../images/loaddata_button.png");
+	font-size: 8pt;
+	font-weight: bold;
+	color: black;
+	outline:none;
+	cursor:pointer;
+}
+.go
+{
+	border: 0;
+	width: 73px;
+	height: 73px;
+	background: url("../images/go_button.png");
+	font-size: 8pt;
+	font-weight: bold;
+	color: black;
+	outline:none;
+	cursor:pointer;
+}
+.reset
+{
+	border: 0;
+	width: 73px;
+	height: 73px;
+	background: url("../images/reset_button.png");
+	font-size: 8pt;
+	font-weight: bold;
+	color: black;
+	outline:none;
+	cursor:pointer;
+}
+.url_guide
+{
+	border: 0;
+	width: 73px;
+	height: 73px;
+	background: url("../images/url_button.png");
+	font-size: 8pt;
+	font-weight: bold;
+	color: black;
+	outline:none;
+	cursor:pointer;
+}
+
+.save
+{
+	border: 0;
+	width: 73px;
+	height: 73px;
+	background: url("../images/save_button.png");
+	font-size: 8pt;
+	font-weight: bold;
+	color: black;
+	outline:none;
+	cursor:pointer;
+}
+.btn:hover
+{
+	background: url("../images/loaddata_hover_button.png");
+}
+
+.go:hover
+{
+	background: url("../images/go_hover_button.png");
+	
+}
+
+.save:hover
+{
+	background: url("../images/save_hover_button.png");
+	
+}
+
+.reset:hover
+{
+	background: url("../images/reset_hover_button.png");
+	
+}
+
+.url_guide:hover
+{
+	background: url("../images/url_hover_button.png");
+	
+}
+.c0 
+{
+	background-color: #FFF; 
+	color: black;
+}
+.c1
+{
+	background-color: #DDD; 
+	color: black;
+}
+td img 
+{ 
+	padding: 0px; 
+	border-width: 0px; 
+	margin:0px; 
+	display: block;
+}
+</style>
+
+
+
+</head>
+<body>
+
+<center>
+<div class="optionlist">
+	<div id="headerr" style="float:left; width:99%; margin-bottom: 12px;">
+		<div id="header_left" style="float:left; width: 51%;">
+			<button class="go" id="go" title="Click here to start registering accounts" style="position: absolute; top: 3px; left: 0px;"></button>
+			<button class="reset" id="reset" title="Click here to reset data" style="position: absolute; top: 3px; left: 66px;"></button>
+			<button class="url_guide" id="urlguide" title="Click here to start check the list of user url" style="position: absolute; top: 3px; left: 132px;"></button>
+			<button class="save" id="savedata" title="Click here to save data" style="position: absolute; top: 3px; left: 198px;"></button>
+		</div>
+		
+		<div id="header_right" style="float:right; margin-top: 3px; margin-right: -6px;">
+			<img src="../images/header.png" style="margin-left: 5px;"></img>
+		</div>
+	</div>
+	
+	
+	<br/><br/>
+	<div id="mainContainer" style="width:518px; height:512px; overflow-y:scroll; overflow-x:hidden" >
+	
+		<div>
+			<img src="../images/select-linkedin.png"></img>
+		</div>
+		<div id="topcontainer" style="float:left; width:100%; height: 46px; position:relative;">
+			<div style="float:left; width:45%; margin-top: 12px;">
+				<embed src="../images/linkedin_swf.swf" style="position: absolute; top: -2px; left: 4px;" width="40" height="40">
+				<input id="yes" value="y" name="selectSocial" type="radio" style="margin-right: 9px; margin-left: 25px;" checked><label for="yes" style="font-weight: normal; font-size: 16px; font-family: serif;">YES</label>
+				<input id="no" value="n" name="selectSocial" type="radio" style="margin-right: 9px;"><label for="no" style="font-weight: normal; font-size: 16px; font-family: serif;">NO</label>
+				<a tabindex="-1" href="#" id="linkedintxt" class="q" style="margin-right: 15px;">?</a>
+			</div>
+			<div style="float:left; width: 54%; margin-top: 5px; font-weight: normal; font-size: 16px; font-family: serif;">
+				URL: <input type="text" id="linkedintext" disabled="disabled" style="width: 75%;"/>
+			</div>
+		</div>
+		
+	<!--	<div id="topcontainertw" style="float:left; width:100%; height: 31px; margin-bottom: 5px; position:relative">
+			
+			<div style="float:left; width:45%; margin-top: 5px;">
+				<embed src="../images/twitter_swf.swf" style="position: absolute; top: -7px; left: 4px;" width="40" height="40">
+				<input id="yest" value="y" name="selectSocialtw" type="radio" style="margin-right: 9px; margin-left: 25px;" checked><label for="yest" style="font-weight: normal; font-size: 16px; font-family: serif;">YES</label>
+				<input id="not" value="n" name="selectSocialtw" type="radio" style="margin-right: 9px;"><label for="not" style="font-weight: normal; font-size: 16px; font-family: serif;">NO</label>
+				<a tabindex="-1" href="#" id="twittertxt" class="q" style="margin-right: 15px;">?</a>
+				
+			</div>
+			
+			<div style="float:left; width: 54%; margin-top: -2px; font-weight: normal; font-size: 16px; font-family: serif;">
+				URL: <input type="text" id="twittertext" disabled="disabled" style="width: 75%;"/>
+			</div>
+		</div>-->
+		<table border="0" cellpadding="0" cellspacing="0" width="500px">
+			
+			<tr>
+				<td colspan="2">
+					<img src="../images/loadopt.png"></img>
+				</td>
+			</tr>
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Load From Sets 
+					<a tabindex="-1" href="#" class="q" id="loadfromsets" >?</a>
+				</td>
+				<td width="55%">
+					<div style="float:left; width: 99%">
+						<div style="float: left; width: 54%; padding-top: 7px;">
+							<input type="file" id="fileToLoad" style="width: 173px;">
+						</div>
+						<div style="float: left; width: 34%; margin-left: 24px;">
+							<button class="btn" title="Loads a set of pre-formatted data from a other sets." id="load_data"></button>
+						</div>
+					</div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">
+					<img src="../images/accopt_new.png" style="margin-top:7px;"></img>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Yahoo Email <a tabindex="-1" href="#" id="email" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="useremail"/>
+				</td>
+			</tr>
+			
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Password <a tabindex="-1" href="#" id="password" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="password"/>
+				</td>
+			</tr>
+		
+			<tr>
+				<td colspan="2">
+					<img src="../images/perinfo.png" style="margin-top:7px;"></img>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					First Name <a tabindex="-1" href="#" id="firstnamee" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="firstname"/>
+				</td>
+			</tr>
+		
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Middle Name <a tabindex="-1" href="#" id="middlenamee" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="middlename"/>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Last Name <a tabindex="-1" href="#" id="lastnamee" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="lastname"/>
+				</td>
+			</tr>
+		
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Country <a tabindex="-1" href="#" id="countryy" class="q">?</a>
+				</td>
+				<td width="55%">
+					<select id="country"></select>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px; position:relative;">
+					Zip <span style="position: absolute; left:475px;"><img id="spinner" src="../images/loading_spinner.gif" style="display:none"></img></span><a tabindex="-1" href="#" id="zipp" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="zip"/>
+				</td>
+			</tr>
+			
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					City <a tabindex="-1" href="#" id="cityy" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="city"/>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					State <a tabindex="-1" href="#" id="statee" class="q">?</a>
+				</td>
+				<td width="55%">
+					<!--<select id="state"></select>-->
+					<input type="text" id="state"/>
+				</td>
+			</tr>
+			
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Birth Year <a tabindex="-1" href="#" id="birthyearr" class="q">?</a>
+				</td>
+				<td width="55%">
+					<select id="birthyear" width="100%"></select>
+				</td>
+			</tr>
+		
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Birth Month <a tabindex="-1" href="#" id="birthmonthh" class="q">?</a>
+				</td>
+				<td width="55%">
+					<select id="birthmonth" width="100%"></select>
+				</td>
+			</tr>
+			
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Birth Day <a tabindex="-1" href="#" id="birthdayy" class="q">?</a>
+				</td>
+				<td width="55%">
+					<select id="birthday" width="100%"></select>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Gender <a tabindex="-1" href="#" id="gender" class="q">?</a>
+				</td>
+				<td width="55%" align="left">
+					<input type="radio" checked="true" name="gender" id="male"/><label for="male">Male</label>
+					<input type="radio" name="gender" id="female"/><label for="female">Female</label>
+				</td>
+			</tr>
+			
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Blog Address <a tabindex="-1" href="#" id="usernamee" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="username"/>
+				</td>
+			</tr>
+		
+			<tr>
+				<td colspan="2">
+					<img src="../images/educinfo.png" style="margin-top:7px;"></img>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					College <a tabindex="-1" href="#" id="college" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="college"/>
+				</td>
+			</tr>
+			
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Major <a tabindex="-1" href="#" id="majorr" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="major"/>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Degree <a tabindex="-1" href="#" id="degreee" class="q">?</a>
+				</td>
+				<td width="55%">
+					<select id="degree" width="100%">
+				</td>
+			</tr>
+						
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Month Started <a tabindex="-1" href="#" id="monthstarted" class="q">?</a>
+				</td>
+				<td width="55%">
+					<select id="educationstartmonth" width="100%">
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Year Started <a tabindex="-1" href="#" id="yearstarted" class="q">?</a>
+				</td>
+				<td width="55%">
+					<select id="educationstartyear" width="100%">
+				</td>
+			</tr>
+			
+		</table>
+		
+	<div class="slideme">
+		<table border="0" cellpadding="0" cellspacing="0" width="500px">
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Month Ended <a tabindex="-1" href="#" id="monthended" class="q">?</a>
+				</td>
+				<td width="55%">
+					<select id="educationendmonth" width="100%">
+				</td>
+			</tr>
+		
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Year Ended <a tabindex="-1" href="#" id="yearended" class="q">?</a>
+				</td>
+				<td width="55%">
+					<select id="educationendyear" width="100%">
+				</td>
+			</tr>
+		</table>
+	</div>
+
+		<table border="0" cellpadding="0" cellspacing="0" width="500px">
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					
+				</td>
+				<td width="55%" style="padding-top: 7px;">
+					<input type="checkbox" id="presently_studied" style="width:5%"/> <header style="display:inline-block; font-family: Futura Today; color:#333; font-size:14px;">  Presently in school </header>
+				</td>
+			</tr>
+		
+			<tr>
+				<td colspan="2">
+					<img src="../images/jobinfo.png" style="margin-top:7px;"></img>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Employer <a tabindex="-1" href="#" id="employerr" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="employer"/>
+				</td>
+			</tr>
+			
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Job Title <a tabindex="-1" href="#" id="jobtit" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="jobtitle"/>
+				</td>
+			</tr>
+		
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Job Description <a tabindex="-1" href="#" id="jobdescription" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="jobdesc"/>
+				</td>
+			</tr>
+			
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Month Started <a tabindex="-1" href="#" id="jobmonths" class="q">?</a>
+				</td>
+				<td width="55%">
+					<select id="jobstartmonth" width="100%">
+				</td>
+			</tr>
+		
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Year Started <a tabindex="-1" href="#" id="jobstarty" class="q">?</a>
+				</td>
+				<td width="55%">
+					<select id="jobstartyear" width="100%">
+				</td>
+			</tr>
+		</table>
+		
+		<div class="slidemeStudy">
+			<table border="0" cellpadding="0" cellspacing="0" width="500px">
+				<tr class="c0">
+					<td width="45%" style="padding: 10px;">
+						Month Ended <a tabindex="-1" href="#" id="jobendm" class="q">?</a>
+					</td>
+					<td width="55%">
+						<select id="jobendmonth" width="100%">
+					</td>
+				</tr>
+			
+				<tr class="c1">
+					<td width="45%" style="padding: 10px;">
+						Year Ended <a tabindex="-1" href="#" id="jobendy" class="q">?</a>
+					</td>
+					<td width="55%">
+						<select id="jobendyear" width="100%">
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		
+		<table border="0" cellpadding="0" cellspacing="0" width="500px">
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					
+				</td>
+				<td width="55%" style="padding-top: 7px;">
+					<input type="checkbox" id="presently_employed" style="width:5%"/> <header style="display:inline-block; font-family: Futura Today; color:#333; font-size:14px;"> Presently employed </header>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">
+					<img src="../images/addinfo.png" style="margin-top:7px;"></img>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Keywords <a tabindex="-1" href="#" id="keyword" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="keywords"/>
+				</td>
+			</tr>
+		
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Tagline <a tabindex="-1" href="#" id="taglinee" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="tagline"/>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Interests <a tabindex="-1" href="#" id="interest" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="interests"/>
+				</td>
+			</tr>
+			
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Organizations <a tabindex="-1" href="#" id="organization" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="organizations"/>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Short Bio <a tabindex="-1" href="#" id="sbio" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="shortbio" maxlength="140"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">
+					<img src="../images/links.png" style="margin-top:7px;"></img>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Link 1 <a tabindex="-1" href="#" id="link1" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="link1_oLinkSet1"/>
+				</td>
+			</tr>
+		
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Link Title 1 <a tabindex="-1" href="#" id="link1t" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="link1_oTitleSet1"/>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Link 2 <a tabindex="-1" href="#" id="link2" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="link2_oLinkSet1"/>
+				</td>
+			</tr>
+			
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Link Title 2 <a tabindex="-1" href="#" id="link2t" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="link2_oTitleSet1"/>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Link 3 <a tabindex="-1" href="#" id="link3" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="link3_oLinkSet1"/>
+				</td>
+			</tr>
+		
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Link Title 3 <a tabindex="-1" href="#" id="link3t" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="link3_oTitleSet1"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">
+					<img src="../images/Biographies_new.png" style="margin-top:7px;"></img>
+				</td>
+			</tr>
+			
+			
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Bio 1 <a tabindex="-1" href="#" id="bio11" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="bio1"/>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Bio 2 <a tabindex="-1" href="#" id="bio22" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="bio2"/>
+				</td>
+			</tr>
+			
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Bio 3 <a tabindex="-1" href="#" title="" id="bio33" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="bio3"/>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Bio 4 <a tabindex="-1" href="#" title="" id="bio44" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="bio4"/>
+				</td>
+			</tr>
+			
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Bio 5 <a tabindex="-1" href="#" id="bio55" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="bio5"/>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Bio 6 <a tabindex="-1" href="#" id="bio66" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="bio6"/>
+				</td>
+			</tr>
+			
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Bio 7 <a tabindex="-1" href="#" id="bio77" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="bio7"/>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Bio 8 <a tabindex="-1" href="#" id="bio88" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="bio8"/>
+				</td>
+			</tr>
+		
+			<tr class="c0">
+				<td width="45%" style="padding: 10px;">
+					Bio 9 <a tabindex="-1" href="#" id="bio99" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="bio9"/>
+				</td>
+			</tr>
+			
+			<tr class="c1">
+				<td width="45%" style="padding: 10px;">
+					Bio 10 <a tabindex="-1" href="#" title="" id="bio100" class="q">?</a>
+				</td>
+				<td width="55%">
+					<input type="text" id="bio10"/>
+				</td>
+			</tr>
+			
+			
+		
+		</table>
+	</div>
+</div>
+</center>
+</body>
+</html>
